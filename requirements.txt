@@ -2,7 +2,7 @@ Django
 django-mathfilters
 Pillow
 psycopg2
-python-decoup
+python-decouple
 razorpay
 requests
 twilio
