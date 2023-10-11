@@ -8,7 +8,7 @@ import random
 
 class Product(models.Model):
 
-    def generate_product_id(self):
+    def generate_product_id():
         """Generate a unique four-digit product ID."""
         while True:
             new_id = random.randint(1000, 9999)
