@@ -6,3 +6,4 @@ python-decouple
 razorpay
 requests
 twilio
+gunicorn
