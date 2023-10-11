@@ -56,6 +56,8 @@ INSTALLED_APPS = [
     'checkout.templatetags',
     'admin_variant',
     'orders',
+    'cloudinary_storage',
+    'cloudinary',
 ]
 
 MIDDLEWARE = [
@@ -151,6 +153,13 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'uploads'
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': config('CLOUDINARY_CLOUD_NAME'),
+    'API_KEY': config('CLOUDINARY_API_KEY') ,
+    'API_SECRET': config('CLOUDINARY_API_SECRET'),
+}
 
 AUTH_USER_MODEL = 'user_home.CustomUser'
 

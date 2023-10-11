@@ -43,10 +43,9 @@ class CustomUserManager(BaseUserManager):
 
 
 
-
 class CustomUser(AbstractUser):
     is_blocked = models.BooleanField(default=False)
-    identification = models.IntegerField(unique=True,default=uuid.uuid4)
+    identification = models.UUIDField(unique=True,default=uuid.uuid4)
     user_image = models.ImageField(upload_to='users',blank=True,null=True)
     username = models.CharField(_('username'),max_length=50,null=True)
     email = models.EmailField(_('email address'), unique=True,max_length=250)
