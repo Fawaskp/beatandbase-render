@@ -7,3 +7,5 @@ razorpay
 requests
 twilio
 gunicorn
+cloudinary
+django-cloudinary-storage
