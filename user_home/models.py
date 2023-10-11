@@ -2,7 +2,7 @@ from django.apps import apps
 from django.contrib.auth.models import AbstractUser, BaseUserManager
 from django.db import models
 from django.utils.translation import gettext_lazy as _
-import random
+import uuid
 from admin_products.models import Product
 
 
@@ -41,16 +41,12 @@ class CustomUserManager(BaseUserManager):
 
         return self._create_user(phone,username, email, password, **extra_fields)
 
-def generate_product_id():
-    """Generate a unique four-digit product ID."""
-    while True:
-        new_id = random.randint(1000, 9999)
-        if not Product.objects.filter(identification=new_id).exists():
-            return new_id
+
+
 
 class CustomUser(AbstractUser):
     is_blocked = models.BooleanField(default=False)
-    identification = models.IntegerField(unique=True,default=generate_product_id)
+    identification = models.IntegerField(unique=True,default=uuid.uuid4)
     user_image = models.ImageField(upload_to='users',blank=True,null=True)
     username = models.CharField(_('username'),max_length=50,null=True)
     email = models.EmailField(_('email address'), unique=True,max_length=250)
